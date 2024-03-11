@@ -21,3 +21,4 @@ After cloning the main repo<br>
 - run: ```npm install && npm run build``` <br>
 - run: ```npm run dev``` <br>
 - go to http://localhost:4000 to see the app running<br>
+- Every time you start working on a feature do consider running ```git pull origin dev``` to avoid issues
