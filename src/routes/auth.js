@@ -12,7 +12,7 @@ authrouter.post("/userlogin", async (req, res) => {
       email,
       name
     });
-    newUser.save();
+    await newUser.save();
     res.json(newUser);
     console.log("user created success");
   } catch (err) {
@@ -37,22 +37,22 @@ authrouter.post("/distlogin", async (req, res) => {
   }
 });
 
-authrouter.post("/familymembers", (req,res)=>{
+authrouter.post("/familymembers",async (req,res)=>{
 
-  const {name, age, relationship} = req.body;
+  const {name, age, relationship} = await req.body;
 
   try{
-    const familyMember = new FamilyMember({
+    const familyMember =  new FamilyMember({
       name,
       age,
       relationship
     })
-    familyMember.save();
+    await familyMember.save();
     res.json(familyMember);
     console.log("New family member added");
   } catch (err) {
     console.error(err);
-    console.log("Error creating new distributor in DB");
+    console.log("Error creating new family member in DB");
   }
 
 })
