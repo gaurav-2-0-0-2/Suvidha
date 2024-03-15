@@ -11,13 +11,14 @@ app.use(cors());
 
 const port = process.env.PORT || 4001;
 
-try{
-  mongoose.connect(process.env.DATABASE_URL, {})
+try {
+  mongoose.connect(process.env.DATABASE_URL);
   console.log("DB connected success");
-}catch(err){
+} catch (err) {
   console.log(`DB connection failed: ${err}`);
 }
-  
+
+
 app.use(express.json());
 
 app.use("/auth", authrouter);

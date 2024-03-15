@@ -1,22 +1,22 @@
 import mongoose from "mongoose";
-import { FamilyMember } from "./FamilyMember.js";
+// import { FamilyMember } from "./FamilyMember.js";
 const Schema = mongoose.Schema;
 
 
 // Define schema for family member
 
 const userSchema = new Schema({
-  // email: {
-  //   type: String,
-  // },
-  name: {
+  email: {
     type: String,
   },
-  rationNumber: Number,
-  familyMembers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'FamilyMember'
-  }]
+  name: {
+    type: String,
+  } 
+  // rationNumber: Number,
+  // familyMembers: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'FamilyMember'
+  // }]
 });
 
 

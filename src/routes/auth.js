@@ -5,7 +5,7 @@ import { FamilyMember } from "../models/FamilyMember.js";
 
 export const authrouter = express.Router();
 
-authrouter.post("/userlogin", async (req, res) => {
+authrouter.post("/userlogin",async  (req, res) => {
   const {email, name} = req.body;
   try {
     const newUser = new User({
@@ -21,14 +21,14 @@ authrouter.post("/userlogin", async (req, res) => {
   }
 });
 
-authrouter.post("/distlogin", async (req, res) => {
+authrouter.post("/distlogin",async  (req, res) => {
   const {email, name} = req.body;
   try {
     const newDist = new Dist({
       email,
       name
     });
-    newDist.save();
+    await newDist.save();
     res.json(newDist);
     console.log("new distributor created successfully");
   } catch (err) {
@@ -39,7 +39,7 @@ authrouter.post("/distlogin", async (req, res) => {
 
 authrouter.post("/familymembers",async (req,res)=>{
 
-  const {name, age, relationship} = await req.body;
+  const {name, age, relationship} = req.body;
 
   try{
     const familyMember =  new FamilyMember({
