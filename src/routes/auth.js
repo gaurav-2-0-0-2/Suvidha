@@ -1,6 +1,7 @@
 import express from "express";
 import { User } from "../models/User.js";
 import { Dist } from "../models/Distributor.js";
+import { FamilyMember } from "../models/FamilyMember.js";
 
 export const authrouter = express.Router();
 
@@ -35,3 +36,23 @@ authrouter.post("/distlogin", async (req, res) => {
     console.log("Error creating new distributor in DB");
   }
 });
+
+authrouter.post("/familymembers", (req,res)=>{
+
+  const {name, age, relationship} = req.body;
+
+  try{
+    const familyMember = new FamilyMember({
+      name,
+      age,
+      relationship
+    })
+    familyMember.save();
+    res.json(familyMember);
+    console.log("New family member added");
+  } catch (err) {
+    console.error(err);
+    console.log("Error creating new distributor in DB");
+  }
+
+})
