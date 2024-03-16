@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int            @id @default(autoincrement())
+  name               String?
+  phoneNumber        String         @unique
+  rationNumber       String         @unique
+  isPhoneOtpVerified Boolean?
+  otp                String?
+  familyMembers      FamilyMember[]
+}
+
+model FamilyMember {
+  id       Int     @id @default(autoincrement())
+  name     String?
+  age      Int
+  relation String?
+  gender   String?
+  userId   Int?
+  User     User?   @relation(fields: [userId], references: [id])
+}
+
+model Dist {
+  id    Int     @id @default(autoincrement())
+  email String?
+  name  String?
+}
